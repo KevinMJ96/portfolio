@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <h1>Kevin</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="#">Mini Apps</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Main content -->
+    <main>
+      <section class="hero">
+        <h2>Welcome to My Portfolio</h2>
+        <p>I’m a passionate developer who loves building cool stuff!</p>
+      </section>
+
+      <section class="highlight">
+        <h3>Featured Project</h3>
+        <p>Look to the right to try the Calculator.</p>
+      </section>
+    </main>
+    
+
+  </div>
+<!-- Floating Button (always visible) -->
+<button id="calcToggleBtn" onclick="toggleCalculator()">🧮</button>
+
+<!-- Hidden Calculator Panel -->
+<div id="calculatorPanel">
+  <h3>Calculator</h3>
+  <input type="text" id="display" disabled>
+  <div class="buttons">
+    <!-- Row 1 -->
+    <button onclick="appendValue('7')">7</button>
+    <button onclick="appendValue('8')">8</button>
+    <button onclick="appendValue('9')">9</button>
+    <button onclick="appendValue('/')">/</button>
+  
+    <!-- Row 2 -->
+    <button onclick="appendValue('4')">4</button>
+    <button onclick="appendValue('5')">5</button>
+    <button onclick="appendValue('6')">6</button>
+    <button onclick="appendValue('*')">*</button>
+  
+    <!-- Row 3 -->
+    <button onclick="appendValue('1')">1</button>
+    <button onclick="appendValue('2')">2</button>
+    <button onclick="appendValue('3')">3</button>
+    <button onclick="appendValue('-')">-</button>
+  
+    <!-- Row 4 -->
+    <button onclick="appendValue('0')">0</button>
+    <button onclick="appendValue('.')">.</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="appendValue('+')">+</button>
+  
+    <!-- Row 5 (Clear) -->
+    <button onclick="clearDisplay()" style="grid-column: span 4;">C</button>
+  </div>
+</div>
+
+<button id="diceToggleBtn">Dice</button>
+
+
+   <div class="dicepage">
+    <h1>Roll the Dice:</h1>
+    <div class="dice">
+      <button onclick="rollDice()" id="dicevalue">X</button>
+    </div>
+  </div>
+
+
+  <footer>
+    <p>&copy; 2025 Kevin. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleCalculator() {
+      const panel = document.getElementById('calculatorPanel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+  
+    function appendValue(val) {
+      document.getElementById('display').value += val;
+    }
+  
+    function calculate() {
+      const display = document.getElementById('display');
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = 'Error';
+      }
+    }
+  
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+  /* DICE */
+
+
+  const dice = document.getElementById('dicevalue')
+    const rollDice = function(){
+        dice.textContent = Math.trunc(Math.random() * 6) + 1
+        console.log(dice.textContent);
+
+    }
+      // Dice toggle functionality
+      const diceToggleBtn = document.getElementById('diceToggleBtn');
+    const dicePage = document.querySelector('.dicepage');
+
+    diceToggleBtn.addEventListener('click', () => {
+        dicePage.style.display = dicePage.style.display === 'none' || dicePage.style.display === '' ? 'block' : 'none';
+    });
+
+
+  </script>
+  
+</body>
+</html>
